@@ -1,0 +1,10 @@
+Processed poem:
+Title: Floating Island
+Author: Dorothy Wordsworth
+Lines: 35
+
+Processed poem:
+Title: I Wandered Lonely as a Cloud
+Author: William Wordsworth
+Lines: 28
+

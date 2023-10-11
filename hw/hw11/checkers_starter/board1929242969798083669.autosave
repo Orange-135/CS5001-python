@@ -1,0 +1,27 @@
+from checker import Checker
+class Bovrd():
+    def __init__(self, BOX_SIZE, BOX_NUM):
+        self.BOX_SIZE = BOX_SIZE
+        self.BOX_NUM = BOX_NUM
+        self.disks = [[0] * self.BOX_NUM for i in range(self.BOX_NUM)]
+        self.neighbours = [-1, 0, 1]
+        
+    def getDisks(self):
+        return self.disks
+    def put_disk(self, red_checker, black_checker):
+        for x, y in black_checker:
+            self.disks[x][y] = Checker(x, y, self.BOX_SIZE)
+        
+        # for x in range(self.BOX_NUM):
+        #     for y in range(self.BOX_NUM):
+        #         if x == 0 and y == 1:
+        #             self.disks[x][y] = Checker(x, y, self.BOX_SIZE)
+        #             for xneighbour in self.neighbours:
+        #                 for yneighbour in self.neighbours:
+        #                     if x + xneighbour >=0 and x + xneighbour <= self.BOX_NUM and y + yneighbour >= 0 and y + yneighbour <= self.BOX_NUM:
+        #                         if self.disks[x][y].king == False:
+        #                             if yneighbour == -1 and (xneighbour == 1 or xneighbour == -1) and self.disks[x+xneighbour][y + yneighbour] == 0:
+        #                                 self.disks[x+xneighbour][y + yneighbour] = 2
+        #                         else:
+        #                             if (yneighbour == -1 or yneighbour == 1) and (xneighbour == 1 or xneighbour == -1) and self.disks[x+xneighbour][y + yneighbour] == 0:
+        #                                 self.disks[x+xneighbour][y + yneighbour] = 2

@@ -1,0 +1,23 @@
+• Which functions you tested for Part 1
+• A summary of valid inputs (inputs for which you'd expect a 'good' result) and expected return values
+• A summary of invalid inputs (inputs for which you'd expect a 'bad' result) and expected return values
+
+Within checker.py
+I want to create test_update(), test_die(), and test_render(). I will create checker object among all test functions.
+- For the test_update(), I will use isMoveable() function to test whether it can be moveable. If it can be moveable, return true; if not moveable, return false.
+- For the test_die(), I will test if the checker dies(checker.x/y == -1) and become invisible(if invisible, return true).
+-For the test_render(), I will test if the checker is rendered correctly.
+
+Within board.py
+I want to create test_getClickedChecker(), test_update(), test_render(). I will create board object among all test functions.
+-For the test_getClickedChecker(), I will test if the correct Checker object is returned when getClickedChecker() is called.
+-For the test_update(), I will test if the game_object list is updated correctly and if the attributes the 'checker' objects in the updated 'game_object' list match the expected values.
+-For the test_render(), I will test if the render() method is called on each Checker object in the game_object list.
+
+
+• Whether you're confident you've verified every possible eventuality
+Consider using parameterized testing to test multiple sets of different inputs to increase test coverage.
+
+
+• Whether your testing revealed any bugs that you then went back and fixed.
+During the testing process, if any errors were discovered in the code, they can be located and fixed based on the failures of assertions and error messages from the tests

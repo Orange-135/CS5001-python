@@ -1,0 +1,41 @@
+1. What data structures you¡¯ll need (lists, dictionaries, etc.)
+	I would like to use list to store checkers.
+
+2. What classes you¡¯ll define
+	I would like define class Board and class Checkers.
+
+3. What functions you¡¯ll need (methods within classes, or other functions that exist outside of any class) + 4. A short description of each class and function/method
+
+
+  Within class Checkers:
+1. A render() to give checkers color and image according to their attributes(such as isKing, isAI)
+2. An update() to update the location of checkers: if the checker is moveable, change the checkers.x and checkers.y to new_x, new_y
+3. A isMoveable() function to check whether the position where mouseReleased is a legal diagonal position to move to: we need to consider some edge cases such as collision with other checkers
+4. A die() function to make the checkers to disappear when it has been eaten via setting x and y to -1, which is out of bound of the board
+
+  Within class Board:
+1. A getClickedChecker() to return the specific holdingChecker when we use mousePressed
+2. An update() to loop through each checkers and check the specific checker is moveable or not and then update the location of the checker
+3. A render() to draw the background as well as to loop through board.game_object -- the list of checkers and draw each checkers
+
+  On the Sketch:
+We take Board as a global variable and call its update() and render() functions.
+Besides, 
+We use a Board.tempChecker to move according to every movement of mouseX and mouseY.
+we use mousePressed() to get the holdingChecker and make it invisible  and also make the tempChecker visible once mouse pressed.
+We use mouseReleased() to get the holdingChecker visible and make tempChecker invisible once mouse released. Besides, the holdingChecker.new_x and holdingCheckers.new_y has been updated by the mouseX and mouseY, which will be tested for location update in def draw()
+
+
+5. A bullet-pointed pseudocode of your driver: Tell us about the flow of control, and think about the 6. following cases:
+	I. When the user makes a move
+	II. When the checker is moved to a legal position (or not)
+	III. When it¡¯s the computer¡¯s turn
+	IV. When game over status is assessed
+I + II. Checker has four movement attributes: x, y, new_x, new_y. The new_x, new_y store the new position of a holding checker once the mouse released. Then I want to update the position of the holding checker by checking if is movable via calculation between x and new_x, y and new_y. Once it's moveable, we will change checkers.x to new_x, checkers.y to new_y, and vice versa.
+
+III. I think we will go through all black checkers to see it has been moved or not. If all of them haven't been moved, the game will not switch the turn. If the checker has been moved by one step, we'll recover the check.isMoved and switch the turn. If the checker has jumped, we will look through the jumping checker's further path to see if it can be moved further. If no such further path, the game will recover the checker.isMoved and switch the turn.
+
+IV:
+a. No more pieces on the board: go through the checkers list, if all checkers.isDie == True, the other player wins
+b. No legal move: go through the checkers list, if all checkers.isMoveable == False, the other player wins
+c. 50 moves have passed without a single jump: count the total amount of moves and jumps, if moves == 50 and jumps == 0, draw
